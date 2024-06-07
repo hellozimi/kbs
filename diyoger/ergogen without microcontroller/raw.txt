@@ -28,7 +28,7 @@ points:
           key.name: thumb_tucky
         reachy:
           key.spread: U
-          key.splay: 
+          key.splay:
           key.origin: [-0.5U, -0.5U]
           key.name: thumb_reachy
 
