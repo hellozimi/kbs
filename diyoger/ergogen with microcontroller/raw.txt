@@ -1,0 +1,83 @@
+units:
+  kx: cx
+  ky: cy
+  px: kx + 2
+  py: ky + 2
+points:
+  zones:
+    matrix:
+      columns:
+        meta:
+        pinky:
+        ring.key.stagger: 0.25U
+        middle.key.stagger: 0.20U
+        index.key.stagger: -0.35U
+        inner.key.stagger: -0.20U
+      rows:
+        bottom.padding: U
+        home.padding: U
+        top.padding: U
+        numbers.padding: U
+    thumb:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [1U, -1.5U]
+        rotate: -30
+      columns:
+        tucky:
+          key.name: thumb_tucky
+        reachy:
+          key.spread: U
+          key.splay:
+          key.origin: [-0.5U, -0.5U]
+          key.name: thumb_reachy
+  #mirror: &mirror
+  #  ref: matrix_index_bottom
+  #  distance: 7u
+
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      bound: true
+      size: [px, py]
+  keys:
+    - what: rectangle
+      where: true
+      bound: false
+      size: [kx-0.5,ky-0.5]
+  board:
+    - what: polygon
+      operation: stack
+      fillet: 0
+      points:
+        - ref: matrix_meta_numbers
+          shift: [-0.5px,0.95py]
+        - ref: matrix_inner_numbers
+          shift: [0.5px,1.05py]
+        - ref: matrix_inner_numbers
+          shift: [1.5px,1.05py]
+        #- ref: matrix_inner_bottom
+        #  shift: [0.5px,0.5py]
+        #- ref: thumb_reachy
+        #  shift: [0px,0.5py]
+        - ref: thumb_reachy
+          shift: [.5px,0.5py]
+        - ref: thumb_reachy
+          shift: [0.5px,-0.5py]
+        - ref: thumb_reachy
+          shift: [0.px,-0.5py]
+        - ref: thumb_tucky
+          shift: [0px,-0.5py]
+        - ref: thumb_tucky
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_index_bottom
+          shift: [-0.5px,-0.6py]
+        - ref: matrix_ring_bottom
+          shift: [-0.5px,-0.75py]
+        - ref: matrix_meta_bottom
+          shift: [-0.5px,-0.5py]
+  combo:
+    - name: board
+    - operation: subtract
+      name: keys
